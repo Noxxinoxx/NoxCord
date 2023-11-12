@@ -1,0 +1,28 @@
+[
+    {
+        "server_name": "Nox Server",
+        "channels_message": [
+            {
+                "name": "nox message 1",
+                "safe": true
+            }
+        ],
+        "channels_voice": [
+            {
+                "name": "nox channel 1",
+                "max": 5,
+                "connected-users": [
+                    
+                ]
+            },
+            {
+                "name": "nox channel 2",
+                "max": 5,
+                "connected-users": [
+                    
+                ]
+            }
+        ],
+        "members": []
+    }
+]

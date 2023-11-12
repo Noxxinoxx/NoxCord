@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>videoChatApp</title>
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <script src="https://cdn.socket.io/4.6.0/socket.io.min.js" integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/c939d0e917.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/peerjs/0.3.8/peer.js" integrity="sha512-hLMxkzTAEYOqDnlY1dVub1YJciDrStJFGHtv2khm2NWQUZbYbV3pZnjT612jtJuXhvzWCI82i8tGd3CtP6b6jQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+      const userid = "<%- userid %>"
+    </script>
+</head>
+
+<body>
+    <div class="servers">
+      <div class="logo">
+        <img src="https://46.162.119.208:3001/noxRelax.png" alt="Discord" />
+      </div>
+      
+      <div class="server-logo">
+        <span class="message__count">25</span>
+        <img src="https://46.162.119.208:3001/noxRelax.png" alt="server" />
+      </div>
+    </div>
+
+    <div class="sidebar">
+      
+      
+      <div class="sidebar__users">
+        <div class="sidebar__usersHeader">
+          <div class="sidebar__header">
+            <h4>Nox Server Channals</h4>
+          </div>
+          <i class="fas fa-plus sidebar__addUser"></i>
+        </div>
+        <div id="channels">
+
+          
+
+        </div>
+
+
+      </div>
+      <div class="sidebar__profile">
+        <div>
+          <span class="status"></span>
+          <img src="" alt="avatar" id="user_profile_pic"/>
+        </div>
+        <div class="sidebar__profileInfo">
+          <h3 id="lowerUsername"> </h3>
+          <p>#USERID</p>
+        </div>
+        <div class="sidebar__profileIcons">
+          <i id="endCall"class="fas fa-microphone"></i>
+          <i class="fas fa-headset"></i>
+          <i class="fas fa-cog"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="chat">
+      <div>
+        <div class="chatHeader">
+          <div class="chatHeader__left">
+            <span class="chatHeader__Dm">@</span>
+            <h3>ManInBlack</h3>
+          </div>
+          
+        </div>
+      </div>
+      <div class="chat__messages" id="video-grid">
+          
+      </div>
+
+      <div class="chat__input">
+        <i class="fas fa-plus-circle fa-lg"></i>
+        <form>
+            <input class="sendMessage" type="text" placeholder="send message">
+            <button class="chat__inputButton" type="submit">Send</button>
+        </form>
+        <div class="chat__inputIcons">
+          <i class="fas fa-gift fa-lg"></i>
+          <i class="fas fa-file-image fa-lg"></i>
+          <i class="fas fa-laugh fa-lg"></i>
+        </div>
+      </div>
+    </div>
+
+    
+  </body>
+  
+  <script>
+    var userdata = '<%-JSON.stringify(userData)%>'
+    userdata = JSON.parse(userdata)
+    console.log(userdata)
+    
+    
+    document.getElementById("user_profile_pic").src = userdata["profile_picture"]
+    document.getElementById("lowerUsername").innerText = userdata["username"]
+
+
+  </script>
+  <script src="roomScript.js"></script>
+</html>

@@ -11,6 +11,40 @@ myVideo.muted = true;
 //    host: "/",
 //    port: "3001",
 //})
+
+
+//Chat
+document.getElementById("button-text-submit").addEventListener("submit", e => {
+    e.preventDefault()
+})
+socket.on("load-database-text-chat" , (data) => {
+
+})
+
+socket.on("chat-data", (data) => {
+    var textdata = data.text
+    var username = data.username
+    var profile_picture = data.profile_picture
+    document.getElementById("chat-messages").insertAdjacentHTML("afterbegin", `
+        <div class="message" id="text-user`+ username + `">
+            <img src="`+ profile_picture + `" alt="avatar" style="width:15%; height:15%;">
+            <div class="message__info">
+                <h4>`+ username + `</h4>
+                <p> `+textdata+`</p>
+            </div>
+        </div>
+    `)
+})
+
+
+
+
+
+
+
+
+
+//VOICE
 var channelIDs = []
 var stream;
 navigator.mediaDevices.getUserMedia({
@@ -20,10 +54,6 @@ navigator.mediaDevices.getUserMedia({
 .then((navStream) => {
     stream = navStream
 });
-
-
-
-
 
 socket.emit("userInfo", { "userid": userid })
 

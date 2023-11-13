@@ -345,11 +345,11 @@ img {
     color: lightgray;
 }
 
-.chat__input > form {
+.chat__input > #form {
     flex: 1;
 }
 
-.chat__input > form > input {
+.chat__input > #form > input {
     padding: 5px;
     background-color: transparent;
     border: none;

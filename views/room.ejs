@@ -67,21 +67,22 @@
         <div class="chatHeader">
           <div class="chatHeader__left">
             <span class="chatHeader__Dm">@</span>
-            <h3>ManInBlack</h3>
+            <h3>Nox Chats</h3>
           </div>
           
         </div>
       </div>
-      <div class="chat__messages" id="video-grid">
+      <div class="chat__messages" id="chat-messages">
           
       </div>
 
       <div class="chat__input">
         <i class="fas fa-plus-circle fa-lg"></i>
-        <form>
-            <input class="sendMessage" type="text" placeholder="send message">
-            <button class="chat__inputButton" type="submit">Send</button>
-        </form>
+        <div id="form">
+          <input class="sendMessage" type="text" placeholder="send message" id="text-submit">
+          <button class="chat__inputButton" id="button-text-submit">Send</button>
+        </div>
+           
         <div class="chat__inputIcons">
           <i class="fas fa-gift fa-lg"></i>
           <i class="fas fa-file-image fa-lg"></i>
@@ -89,7 +90,7 @@
         </div>
       </div>
     </div>
-
+    <div id="video-grid" hidden></div>
     
   </body>
   

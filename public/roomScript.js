@@ -210,7 +210,7 @@ socket.on("UserIsInChannelSendCallResponse", (callID) => {
 function createNewCallPeer(callID, myID) {
     var peer = new Peer(myID, {
         path: "/peerjs",
-        host: "46.162.119.208",
+        host: "192.168.2.180",
         port: "3001",
     })
     peer.on("open", (id) => {
@@ -226,7 +226,7 @@ function createNewPeerOnCall(myID) {
     
     var peer = new Peer(myID, {
         path: "/peerjs",
-        host: "46.162.119.208",
+        host: "192.168.2.180",
         port: "3001",
     })
     peer.on("open", (id) => {

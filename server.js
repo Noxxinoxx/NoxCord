@@ -79,6 +79,40 @@ app.post("/loginReq", (req, res) => {
 
 io.on("connection", (socket) => {
 
+
+
+  //text
+  var textdatabase = fs.readFileSync(__dirname + "/Database/chatDatabase.json")
+  textdatabase = JSON.parse(textdatabase)
+  socket.emit("load-database-text-chat",textdatabase)
+
+
+  socket.on("user-send-text", (data) => {
+    //save it to text database with text and time and data of its send and username
+    var textdatabase = fs.readFileSync(__dirname + "/Database/chatDatabase.json")
+    textdatabase = JSON.parse(textdatabase)
+    var userdata;
+    for(var i = 0; i < users.length;  i++) {
+      if(data.userid == users[i].userid){
+        userdata = users[i].userData
+      }
+    }
+    
+    textdatabase.push({"username" : userdata.username, "text" : data.text})
+    fs.writeFileSync(__dirname + "/Database/chatDatabase.json", JSON.stringify(textdatabase))
+    console.log(textdatabase)
+    
+
+    //then broadcast the data back to every connected user
+    io.sockets.emit("user-sent-a-text-message", {"text" : data.text, "username" : userdata.username, "user_profile" : userdata.profile_picture})
+  })
+
+
+
+
+
+  //voice
+
   socket.on("userInfo", (data) => {
     allConnectedClients.push({ "userid": data.userid, "socket": socket})
     //console.log(allConnectedClients)

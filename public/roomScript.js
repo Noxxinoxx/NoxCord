@@ -14,18 +14,25 @@ myVideo.muted = true;
 
 
 //Chat
-document.getElementById("button-text-submit").addEventListener("submit", e => {
-    e.preventDefault()
+document.getElementById("text-submit").addEventListener("keypress", e => {
+    if(e.key === "Enter") {
+        console.log("submited chat")
+        var text = document.getElementById("text-submit").value
+        console.log(text)
+        socket.emit("user-send-text", {"text" : text, "userid": userid})
+    }
 })
 socket.on("load-database-text-chat" , (data) => {
-
+    
+    console.log(data)
 })
 
-socket.on("chat-data", (data) => {
+socket.on("user-sent-a-text-message", (data) => {
+    console.log(data)
     var textdata = data.text
     var username = data.username
-    var profile_picture = data.profile_picture
-    document.getElementById("chat-messages").insertAdjacentHTML("afterbegin", `
+    var profile_picture = data.user_profile
+    document.getElementById("chat-messages").insertAdjacentHTML("beforeend", `
         <div class="message" id="text-user`+ username + `">
             <img src="`+ profile_picture + `" alt="avatar" style="width:15%; height:15%;">
             <div class="message__info">
@@ -210,7 +217,7 @@ socket.on("UserIsInChannelSendCallResponse", (callID) => {
 function createNewCallPeer(callID, myID) {
     var peer = new Peer(myID, {
         path: "/peerjs",
-        host: "192.168.2.180",
+        host: "192.168.2.133",
         port: "3001",
     })
     peer.on("open", (id) => {
@@ -226,7 +233,7 @@ function createNewPeerOnCall(myID) {
     
     var peer = new Peer(myID, {
         path: "/peerjs",
-        host: "192.168.2.180",
+        host: "192.168.2.133",
         port: "3001",
     })
     peer.on("open", (id) => {

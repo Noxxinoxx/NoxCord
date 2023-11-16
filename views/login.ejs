@@ -19,11 +19,11 @@
         document.getElementById("loginButton").addEventListener("click", () => {
             var username = document.getElementById("username").value
             var password = document.getElementById("password").value
-            postData("https://192.168.2.133:3001/loginReq/", {"username" : username, "password": password}).then((data) => {
+            postData("https://192.168.2.180:3001/loginReq/", {"username" : username, "password": password}).then((data) => {
             
                 console.log(data)
                 if(data.success) {
-                    window.location.href = "https://192.168.2.133:3001/" + data.loginID
+                    window.location.href = "https://192.168.2.180:3001/" + data.loginID
                 }else {
                     console.log(data.message)
                 }

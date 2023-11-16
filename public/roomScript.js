@@ -20,10 +20,26 @@ document.getElementById("text-submit").addEventListener("keypress", e => {
         var text = document.getElementById("text-submit").value
         console.log(text)
         socket.emit("user-send-text", {"text" : text, "userid": userid})
+        document.getElementById("text-submit").value = ""
     }
 })
 socket.on("load-database-text-chat" , (data) => {
-    
+    console.log(data.length)
+    for(var i = data.length - 1; i > data.length - 50; --i) {
+        if(i == 0) {
+            return
+        }
+        console.log(data[i])
+        document.getElementById("chat-messages").insertAdjacentHTML("afterbegin", `
+        <div class="message" id="text-user`+ data[i].username + `">
+            <img src="`+ data[i].profile_picture + `" alt="avatar" style="width:10%; height:10%;">
+            <div class="message__info">
+                <h4>`+ data[i].username + `</h4>
+                <p> `+data[i].text+`</p>
+            </div>
+        </div>
+        `)
+    }
     console.log(data)
 })
 
@@ -34,7 +50,7 @@ socket.on("user-sent-a-text-message", (data) => {
     var profile_picture = data.user_profile
     document.getElementById("chat-messages").insertAdjacentHTML("beforeend", `
         <div class="message" id="text-user`+ username + `">
-            <img src="`+ profile_picture + `" alt="avatar" style="width:15%; height:15%;">
+            <img src="`+ profile_picture + `" alt="avatar" style="width:10%; height:10%;">
             <div class="message__info">
                 <h4>`+ username + `</h4>
                 <p> `+textdata+`</p>
@@ -217,7 +233,7 @@ socket.on("UserIsInChannelSendCallResponse", (callID) => {
 function createNewCallPeer(callID, myID) {
     var peer = new Peer(myID, {
         path: "/peerjs",
-        host: "192.168.2.133",
+        host: "192.168.2.180",
         port: "3001",
     })
     peer.on("open", (id) => {
@@ -233,7 +249,7 @@ function createNewPeerOnCall(myID) {
     
     var peer = new Peer(myID, {
         path: "/peerjs",
-        host: "192.168.2.133",
+        host: "192.168.2.180",
         port: "3001",
     })
     peer.on("open", (id) => {

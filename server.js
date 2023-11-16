@@ -98,7 +98,7 @@ io.on("connection", (socket) => {
       }
     }
     
-    textdatabase.push({"username" : userdata.username, "text" : data.text})
+    textdatabase.push({"username" : userdata.username, "text" : data.text, "profile_picture" : userdata.profile_picture})
     fs.writeFileSync(__dirname + "/Database/chatDatabase.json", JSON.stringify(textdatabase))
     console.log(textdatabase)
     

@@ -86,7 +86,6 @@ document.getElementById("endCall").addEventListener("click", () => {
     document.getElementById("user" + userdata["username"]).remove()
 
     socket.emit("userleftChannel", userdata["username"])
-    peer.close()
 })
 socket.on("userleftChannelResponse", (data) => {
     console.log(data)

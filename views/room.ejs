@@ -57,7 +57,7 @@
         <div class="sidebar__profileIcons">
           <i id="endCall"class="fas fa-microphone"></i>
           <i class="fas fa-headset"></i>
-          <i class="fas fa-cog"></i>
+          <i class="fas fa-cog" id="settings"></i>
         </div>
       </div>
     </div>
@@ -91,6 +91,21 @@
       </div>
     </div>
     <div id="video-grid" hidden></div>
+
+    <div id="settingsmodel"style="display: flex; justify-content: center; width: 100%; height: 50%; position:absolute; visibility: hidden">
+      <div id="modal" style="width: 50%; height: 50%; background-color: lightcyan;position: absolute; margin: 0 auto; border-radius: 20px; padding: 25px">
+        <h1><b>Settings</b></h1>
+        <br>
+        <p>This is the settings page for now you can only change your profile pick</p>
+        <br>
+        <label for="input_profile_pick" style="font-size: 25px;">Profile picture:  </label><input id="input_profile_pick" placeholder="link to profile picture" type="text" style="width: 50%; height: 10% ;" >
+
+        <div style="padding: 20px;">
+          <button style="position: absolute; bottom: 10px; right: 10px; width: 100px; height: 50px; background-color: green; color: white; border-radius: 40px; font-size: 20px;" id="savesettings">Save</button>
+        </div>
+        
+      </div>  
+    </div>
     
   </body>
   

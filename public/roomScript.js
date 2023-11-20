@@ -5,12 +5,33 @@ let myVideoStream;
 const videoGrid = document.getElementById("video-grid");
 const myVideo = document.createElement("video");
 myVideo.muted = true;
-
+var settingsOpen = false;
 //var peer = new Peer(userid.toString(), {
 //    path: "/peerjs",
 //    host: "/",
 //    port: "3001",
 //})
+
+
+//settings panel
+
+document.getElementById("settings").addEventListener("click", () => {
+    console.log("is pressed")
+    if(settingsOpen == false) {
+        document.getElementById("settingsmodel").style.visibility = "visible"
+        settingsOpen = true
+    }else {
+        document.getElementById("settingsmodel").style.visibility = "hidden"
+        settingsOpen = false
+    }
+})
+
+document.getElementById("savesettings").addEventListener("click", () => {
+    socket.emit("saveSettings", {"username" : userdata["username"], "url" : document.getElementById("input_profile_pick").value})
+})
+
+
+
 
 
 //Chat

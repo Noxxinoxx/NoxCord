@@ -78,6 +78,26 @@ app.post("/loginReq", (req, res) => {
 
 
 io.on("connection", (socket) => {
+  //settings panel
+
+  socket.on("saveSettings", (data) => {
+    //save to database.json
+    console.log(data)
+    var sentUsername = data.username
+    var sentUrl = data.url
+    
+    var database = fs.readFileSync(__dirname + "/Database/database.json")
+    database = JSON.parse(database)
+
+    for(var i = 0; i < database.length; i++) {
+      if(database[i].username == sentUsername) {
+        data[i].profile_picture = sentUrl
+        return;
+      }
+    }
+
+  })
+
 
 
 

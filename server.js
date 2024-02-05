@@ -4,8 +4,6 @@ const fs = require("fs")
 const cors = require("cors")
 const Login = require("./login")
 
-
-
 const app = express()
 const server = https.createServer({
   key: fs.readFileSync("key.pem"),
@@ -27,8 +25,6 @@ const peerServer = ExpressPeerServer(server, {
 });
 
 app.use("/peerjs", peerServer)
-
-
 app.use(cors());
 app.use(express.json());
 app.use(express.static("public"));
@@ -97,9 +93,6 @@ io.on("connection", (socket) => {
     }
 
   })
-
-
-
 
   //text
   var textdatabase = fs.readFileSync(__dirname + "/Database/chatDatabase.json")
@@ -236,5 +229,5 @@ app.get("/test" , (req,res) => {
 })
 
 server.listen(3001, () => {
-  console.log("running on port 8080")
+  console.log("running on port 3001")
 })

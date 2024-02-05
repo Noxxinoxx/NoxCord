@@ -66,8 +66,7 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-Noxcord is a social platform used as a replacement for discord. This was a pet project I did when I
-wanted to learn about communiation over the internet and how STUN & TURN server worked. It also was a fun challenge to write the hole front-end in pure HTML/CSS. The main reson i did this was becoure i often use better tools like vue.js or react.js as the frontend or tailwind if I want something more light weight.
+Noxcord is a social platform used as a replacement for Discord. It was a pet project I undertook when I wanted to learn about communication over the internet and how STUN & TURN servers worked. Additionally, it was a fun challenge to write the whole front-end in pure HTML/CSS. The main reason I pursued this project was because I often use better tools like Vue.js or React.js for the frontend, or Tailwind if I want something more lightweight. In conclusion, this was a fun project, and I hope some people find it useful!
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -90,7 +89,7 @@ This project is built with the following:
 <!-- GETTING STARTED -->
 ## Getting Started
 
-To run this project you need to clone this repo. Have all the node packages installed a full installation guide will follow below.
+To run this project, you'll need to clone this repository and ensure that all Node packages are installed. A complete installation guide will follow below.
 
 
 ### Installation
